@@ -1,5 +1,6 @@
 library("data.table")
 library("dplyr")
+library("xlsx")
 
 #Selecionando Alagoas
 f<-function(x,pos) {
@@ -7,7 +8,7 @@ f<-function(x,pos) {
 }
 
 #escolhendo os anos
-ano <- c('14','15','16','17','18', '19')
+ano <- c('15','16','17','18', '19')
 
 #criando df para armazenar os dados
 matriculas <- data.frame()

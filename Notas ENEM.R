@@ -3,7 +3,7 @@ library("dplyr")
 
 #Selecionando Alagoas
 f<-function(x,pos) {
-  dplyr::filter(x, SG_UF_ESC== "AL")
+  dplyr::filter(x, SG_UF_RESIDENCIA== "AL")
 }
 
 #escolhendo os anos
@@ -31,12 +31,15 @@ if(i == '15'){
     delim = ";")
 }
 
+
 #selecionando variaveis
 df<-df %>%
-  select(TP_DEPENDENCIA_ADM_ESC,NU_NOTA_CN,NU_NOTA_CH,NU_NOTA_LC,NU_NOTA_MT,NU_NOTA_REDACAO,CO_MUNICIPIO_ESC)
+  select(TP_ESCOLA,IN_TREINEIRO,TP_ST_CONCLUSAO,NU_NOTA_CN,NU_NOTA_CH,NU_NOTA_LC,NU_NOTA_MT,NU_NOTA_REDACAO)
+
+df<-subset(df,TP_ESCOLA!=1)
 
 #calculando a media
-df$media <- rowMeans(subset(df, select = c(NU_NOTA_CH, NU_NOTA_CN, NU_NOTA_LC, NU_NOTA_MT, NU_NOTA_REDACAO)), na.rm = TRUE)
+df$media <- rowMeans(subset(df$tp, select = c(NU_NOTA_CH, NU_NOTA_CN, NU_NOTA_LC, NU_NOTA_MT, NU_NOTA_REDACAO)), na.rm = TRUE)
 
 #excluindo NAs
 df <- na.omit(df)
@@ -82,4 +85,5 @@ dadosenem <- rbind(dadosenem, df)
 dadosenem$media <- lapply(dadosenem$media, round, 2)
 dadosenem$media <- as.character(dadosenem$media)
 write.csv(dadosenem, 'dadosenem.csv', sep = ';', row.names = FALSE)
+
 
