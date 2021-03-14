@@ -196,7 +196,7 @@ taxas_educacao <- function(ano) {
     unzip(zipfile = temp, exdir = temp2)
   
     #lendo o arquivo
-    df <- read_excel(file.path(temp2, paste0('TX RENDIMENTO MUNICÃ–PIOS 20',ano,'.xls')))
+    df <- read_excel(file.path(temp2, paste0('TX RENDIMENTO MUNICÍPIOS 20',ano,'.xls')))
     
     #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
@@ -209,6 +209,8 @@ taxas_educacao <- function(ano) {
 
 #selecionando os anos
 ano<-c('07','08','09','10','11','12','13','14','15','16','17','18','19')
+#ano<-c('15','16','17','18','19')
+
 
 #criando a base para armazenar os dados
 taxas <- data.frame()
@@ -250,12 +252,12 @@ names(taxas)<-linha
 
 #selecionando as variaveis desejadas
 taxas<-taxas %>% 
-  select(`CÃ³digo do MunicÃ­pio`,`Ano`,`LocalizaÃ§Ã£o`,`DependÃªncia Administrativa`,`Taxa de AprovaÃ§Ã£o Total`,`Taxa de ReprovaÃ§Ã£o Total`,`Taxa de Abandono Total`)
+  select(`Código do Município`,`Ano`,`Localização`,`Dependência Administrativa`,`Taxa de Aprovação Total`,`Taxa de Reprovação Total`,`Taxa de Abandono Total`)
 
 
 #arrumando a base final
-taxas$`Taxa de AprovaÃ§Ã£o Total`<-as.numeric(as.character(taxas$`Taxa de AprovaÃ§Ã£o Total`))
-taxas$`Taxa de ReprovaÃ§Ã£o Total`<-as.numeric(as.character(taxas$`Taxa de ReprovaÃ§Ã£o Total`))
+taxas$`Taxa de Aprovação Total`<-as.numeric(as.character(taxas$`Taxa de Aprovação Total`))
+taxas$`Taxa de Reprovação Total`<-as.numeric(as.character(taxas$`Taxa de Reprovação Total`))
 taxas$`Taxa de Abandono Total`<-as.numeric(as.character(taxas$`Taxa de Abandono Total`))
 
 #baixando em csv
