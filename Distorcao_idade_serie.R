@@ -23,7 +23,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TDI_20',ano,'_ESCOLAS/TDI_ESCOLAS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:26)
     df<-subset(df,`3`=="AL")
@@ -42,7 +42,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TDI_20',ano,'_ESCOLAS/TDI_ESCOLAS_20',ano,'.xlsx')))
     
-    #organizando a base para junçã
+    #organizando a base para junÃ§Ã£
     df<-df[-1:-6,]
     names(df)<-c(1:27)
     df$`3`<-NULL
@@ -68,7 +68,7 @@ for (i in ano) {
   taxas<-rbind(taxas,df)
 }
 
-#pegando o cabeçalho
+#pegando o cabeÃ§alho
 ano<-'19'
 
 #link  
@@ -83,7 +83,7 @@ unzip(zipfile = temp, exdir = temp2)
 #lendo o arquivo
 df <- read.xlsx(file.path(temp2, paste0('/TDI_20',ano,'_ESCOLAS/TDI_ESCOLAS_20',ano,'.xlsx')))
 
-#pegando as informações para a primeira linha
+#pegando as informaÃ§Ãµes para a primeira linha
 linha <- data.frame(paste(df[4,],df[5,]))
 names(linha)<-"linha"
 
@@ -98,10 +98,9 @@ linha<-as.data.frame(t(linha))
 names(taxas)<-linha
 
 #pivot
-
 taxas<- taxas %>% 
   tidyr::pivot_longer(
-    cols = 'Ensino Fundamental de 8 e 9 anos Total ':' 4� S�rie', 
+    cols = 'Ensino Fundamental de 8 e 9 anos Total ':' 4ª Série', 
     names_to = "atributo", 
     values_to = "valor")
 
@@ -110,8 +109,6 @@ taxas$valor <- gsub("--", NA, taxas$valor)
 taxas<-na.omit(taxas)
 
 taxas$valor<-as.numeric(as.character(taxas$valor))
-
-setwd('C:/Users/User/Desktop/Drive/Educacao/Painel_Censo_Escolar')
 
 #baixando em csv
 write_xlsx(taxas,"distorcao.xlsx")
