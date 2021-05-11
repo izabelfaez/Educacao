@@ -26,7 +26,7 @@ taxas_educacao <- function(ano) {
     
     df <- read.xlsx(file.path(temp2, paste0('/tx_rend_escolas_20',ano,'/tx_rend_escolas_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-7,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -45,7 +45,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TX_REND_ESCOLAS_20',ano,'/TX_REND_ESCOLAS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-7,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -64,7 +64,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TAXA_REND_20',ano,'_ESCOLAS/TX_REND_ESCOLAS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-7,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -83,7 +83,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TAXA_REND_20',ano,'_ESCOLAS/TX_REND_ESCOLAS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-7,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -108,7 +108,7 @@ for (i in ano) {
 }
 
 
-#pegando o cabeçalho
+#pegando o cabeÃ§alho
 ano<-'19'
 
 #link  
@@ -123,7 +123,7 @@ unzip(zipfile = temp, exdir = temp2)
 #lendo o arquivo
 df <- read.xlsx(file.path(temp2, paste0('/tx_rend_escolas_20',ano,'/tx_rend_escolas_20',ano,'.xlsx')))
 
-#pegando as informações para a primeira linha
+#pegando as informaÃ§Ãµes para a primeira linha
 linha <- data.frame(t(df[4,]))
 names(linha)<-"linha"
 linha<- linha %>% fill(linha)
@@ -152,7 +152,7 @@ names(taxas)<-linha
 
 taxas<- taxas %>% 
   tidyr::pivot_longer(
-    cols = 'Taxa de Aprova��o Ensino Fundamental de 8 e 9 anos Total':'Taxa de Abandono N�o-Seriado', 
+    cols = 'Taxa de Aprovação Ensino Fundamental de 8 e 9 anos Total':'Taxa de Abandono Não-Seriado', 
     names_to = "atributo", 
     values_to = "valor")
 
@@ -161,8 +161,6 @@ taxas$valor <- gsub("--", NA, taxas$valor)
 taxas<-na.omit(taxas)
 
 taxas$valor<-as.numeric(as.character(taxas$valor))
-
-setwd('C:/Users/User/Desktop/Drive/Educacao/Painel_Censo_Escolar')
 
 #baixando em csv
 write_xlsx(taxas,"taxas.xlsx")
