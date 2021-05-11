@@ -23,7 +23,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/tx_rend_municipios_20',ano,'/tx_rend_municipios_20',ano,'.xlsx')))
   
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -42,7 +42,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TX_REND_MUNICIPIOS_20',ano,'/TX_REND_MUNICIPIOS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -61,7 +61,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TAXA_REND_20',ano,'_MUNICIPIOS/TX_REND_MUNICIPIOS_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -80,7 +80,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('/TAXA_REND_20',ano,'_MUNICIPIOS/TX_REND_MUN_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -99,7 +99,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('TAXAS RENDIMENTOS MUNICIPIOS 20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -118,7 +118,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read.xlsx(file.path(temp2, paste0('tx_rendimento_municipios_20',ano,'.xlsx')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -138,7 +138,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read_excel(file.path(temp2, paste0('tx_rendimento_municipios_20',ano,'.xls')))
    
-    #organizando a base para junção 
+    #organizando a base para junÃ§Ã£o 
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -158,7 +158,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read_excel(file.path(temp2, paste0('TX RENDIMENTOS MUNICIPIOS 20',ano,'.xls')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -178,7 +178,7 @@ taxas_educacao <- function(ano) {
     #lendo o arquivo
     df <- read_excel(file.path(temp2, paste0('TX RENDIMENTO MUNICIPIOS 20',ano,'.xls')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -196,9 +196,9 @@ taxas_educacao <- function(ano) {
     unzip(zipfile = temp, exdir = temp2)
   
     #lendo o arquivo
-    df <- read_excel(file.path(temp2, paste0('TX RENDIMENTO MUNIC�PIOS 20',ano,'.xls')))
+    df <- read_excel(file.path(temp2, paste0('TX RENDIMENTO MUNICÍPIOS 20',ano,'.xls')))
     
-    #organizando a base para junção
+    #organizando a base para junÃ§Ã£o
     df<-df[-1:-6,]
     names(df)<-c(1:61)
     df<-subset(df,`3`=="AL")
@@ -209,7 +209,6 @@ taxas_educacao <- function(ano) {
 
 #selecionando os anos
 ano<-c('07','08','09','10','11','12','13','14','15','16','17','18','19')
-#ano<-c('15','16','17','18','19')
 
 
 #criando a base para armazenar os dados
@@ -222,7 +221,7 @@ for (i in ano) {
 }
 
 
-#pegando o cabeçalho
+#pegando o cabeÃ§alho
 ano<-'19'
 
 #link  
@@ -237,7 +236,7 @@ unzip(zipfile = temp, exdir = temp2)
 #lendo o arquivo
 df <- read.xlsx(file.path(temp2, paste0('/tx_rend_municipios_20',ano,'/tx_rend_municipios_20',ano,'.xlsx')))
 
-#pegando as informações para a primeira linha
+#pegando as informaÃ§Ãµes para a primeira linha
 linha <- data.frame(paste(df[4,],df[6,]))
 names(linha)<-"linha"
 
@@ -252,12 +251,12 @@ names(taxas)<-linha
 
 #selecionando as variaveis desejadas
 taxas<-taxas %>% 
-  select(`C�digo do Munic�pio`,`Ano`,`Localiza��o`,`Depend�ncia Administrativa`,`Taxa de Aprova��o Total`,`Taxa de Reprova��o Total`,`Taxa de Abandono Total`)
+  select(`Código do Município`,`Ano`,`Localização`,`Dependência Administrativa`,`Taxa de Aprovação Total`,`Taxa de Reprovação Total`,`Taxa de Abandono Total`)
 
 
 #arrumando a base final
-taxas$`Taxa de Aprova��o Total`<-as.numeric(as.character(taxas$`Taxa de Aprova��o Total`))
-taxas$`Taxa de Reprova��o Total`<-as.numeric(as.character(taxas$`Taxa de Reprova��o Total`))
+taxas$`Taxa de Aprovação Total`<-as.numeric(as.character(taxas$`Taxa de Aprovação Total`))
+taxas$`Taxa de Reprovação Total`<-as.numeric(as.character(taxas$`Taxa de Reprovação Total`))
 taxas$`Taxa de Abandono Total`<-as.numeric(as.character(taxas$`Taxa de Abandono Total`))
 
 #baixando em csv
