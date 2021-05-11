@@ -93,6 +93,4 @@ ideb<-na.omit(ideb)
 
 
 #baixando o csv pronto
-setwd('C:/Users/User/Desktop/Drive/Educacao/Painel_Censo_Escolar')
-
 write_xlsx(ideb,"ideb_escola.xlsx")
